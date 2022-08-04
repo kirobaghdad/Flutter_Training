@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Welcome.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/welcome.dart';
+//import 'colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,8 +25,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        // primarySwatch: Colors.blue,
         fontFamily: GoogleFonts.courierPrime().fontFamily,
+        backgroundColor: const Color.fromARGB(255, 174, 178, 219),
       ),
       home: const Welcome(),
     );
