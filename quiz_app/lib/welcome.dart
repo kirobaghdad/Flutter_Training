@@ -39,12 +39,10 @@ class _WelcomeState extends State<Welcome> {
               style: TextStyle(fontSize: 40, color: Colors.red),
             ),
             onPressed: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Questions(
-                            questions: questions,
-                          )));
+                      builder: (context) => Questions(questions)));
             },
           ),
         )));

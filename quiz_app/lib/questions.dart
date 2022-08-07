@@ -1,29 +1,40 @@
 import 'package:flutter/material.dart';
 import 'question_screen.dart';
+import 'result.dart';
 
 class Questions extends StatefulWidget {
-  final List<dynamic>? questions;
+  List<dynamic>? questions;
 
-  const Questions({Key? key, @required this.questions}) : super(key: key);
+  Questions(this.questions);
   @override
-  State<Questions> createState() => _QuestionsState(questions);
+  State<Questions> createState() => _QuestionsState();
 }
 
 class _QuestionsState extends State<Questions> {
+  dynamic score = 0;
+  dynamic index;
+  void _answerQuestion(bool s) {
+    setState(() {
+      if (s) score += 1;
+      index++;
+    });
+  }
+
   @override
   initState() {
     super.initState();
+    setState(() {
+      index = 0;
+    });
   }
 
-  _QuestionsState(this.questions);
-
-  List<dynamic>? questions;
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
-      body: Question(question: questions![0]),
-    ));
+        body: index < widget.questions!.length
+            ? Question(
+                question: widget.questions![index],
+                answerQuestion: _answerQuestion)
+            : Result(result: score, numOfQuestions: widget.questions!.length)));
   }
 }
-
-// Question(question: questions[0])

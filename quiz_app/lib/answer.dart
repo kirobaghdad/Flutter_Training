@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
   final String answer;
-  const Answer({Key? key, required this.answer}) : super(key: key);
+  final Function answerQuestion;
+  final bool check;
+
+  Answer(
+      {required this.answer,
+      required this.answerQuestion,
+      required this.check});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,9 @@ class Answer extends StatelessWidget {
               bottomRight: Radius.circular(10),
             )),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            answerQuestion(check);
+          },
           child: Text(
             answer,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
